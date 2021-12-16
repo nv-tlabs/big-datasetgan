@@ -400,13 +400,13 @@
             <td>
             <span style="font-size:18px">
                 <b>Architecture of BigDatasetGAN based on BigGANs.</b> BigGAN adopts a convolutional architecture. Given random
-                noise z and a class label y_c , we obtain BigGAN’s generator
+                noise z and a class label y_c , we obtain BigGAN's generator
                 features F BigGAN from different layers. We group features from different spatial resolutions into high-, mid- and low-
                 level by their semantic meaning. Specifically, we group the first three ResBlocks into a high-level group with resolu-
-                tions 8 × 8 to 32 × 32. We group the next three ResBlocks including one attention block together as a mid-level group
-                with resolutions from 64 × 64 to 128 × 128. The last two ResBlocks before the image output layer are grouped into a
-                low-level group with resolutions 256 × 256 to 512 × 512. Note that high-level features in lower layers have a very
-                high feature dimensionality, i.e., 1536 × 8 × 8.
+                tions 8x8 to 32x32. We group the next three ResBlocks including one attention block together as a mid-level group
+                with resolutions from 64x64 to 128x128. The last two ResBlocks before the image output layer are grouped into a
+                low-level group with resolutions 256x256 to 512x512. Note that high-level features in lower layers have a very
+                high feature dimensionality, i.e., 1536x8x8.
             </span>
             </td>
         </tr>
@@ -546,6 +546,94 @@
     <br>
     <hr>
     <br>
+
+    <center><h1> Downstream Tasks Performance</h1></center>
+
+    <table align=center width=1100px>
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>MS-COCO object detection & instance segmentation.</b> Using our synthetic data during pre-training improves object detection
+                    performance by 0.4 AP bb , and instance segmentation by 0.3 AP mk in 1× training schedule. When training longer in the 2× schedule,
+                    our synthetic data consistently helps improving the task performance by 0.3 AP bb and 0.2 AP mk.
+                </span>
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/mscoco.png"><img src = "./resources/mscoco.png" width="1100px"></img></a><br>
+                </center>
+            </td>
+            
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1100px>
+        <tr>
+            <td>
+                <span style="font-size:18px">
+                    <b>PASCAL VOC detection & semantic segmentation.</b> For detection, we train on the trainval’07+12
+                    set and evaluate on test07. For semantic segmentation, we train on train aug2012 and evaluate on val2012. Results
+                    are average over 5 individual trials.
+                </span>
+            </td>
+        </tr>
+           
+
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/pascal-voc.png"><img src = "./resources/pascal-voc.png" width="700px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1100px>
+        <tr>
+            <td colspan="2">
+                <span style="font-size:18px">
+                    <b>Semi-supervised chest X-ray segmentation with a frozen backbone.</b> Performance numbers are mIoU. When using
+                    our synthetic dataset, we match the performance of the supervised and self-supervised pre-trained networks with only 1% and 5% of
+                    labels, respectively. We achieve a big gain using 100% of the data. Numbers are averaged over 3 independent trials.
+                </span>
+            </td>
+            <td colspan="2">
+                <span style="font-size:18px">
+                    <b>Cityscapes instance and semantic segmentation.</b> training with our BigGAN-sim dataset improves AP mk by 0.3 points in the instance segmentation task over
+                    the baseline model. However, we do not see a significant performance boost for the semantic segmentation task.
+                </span>
+            </td>
+
+        </tr>
+           
+        <tr>
+            <td colspan="2">
+                <center>
+                    <a href="./resources/chest-xray.png"><img src = "./resources/chest-xray.png" width="500px"></img></a><br>
+                </center>
+            </td>
+            <td colspan="2">
+                <center>
+                    <a href="./resources/cityscapes.png"><img src = "./resources/cityscapes.png" width="500px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        
+    </table>
+    <br>
+    <hr>
+    <br>
+
     <center><h1> Dataset Visualization</h1></center>
 
     <table align=center width=1100px>
@@ -682,92 +770,7 @@
     <br>
     <hr><hr>
 
-    <center><h1> Downstream Tasks Performance</h1></center>
-
-    <table align=center width=1100px>
-        <tr>
-            <td>
-
-                <span style="font-size:18px">
-                    <b>MS-COCO object detection & instance segmentation.</b> Using our synthetic data during pre-training improves object detection
-                    performance by 0.4 AP bb , and instance segmentation by 0.3 AP mk in 1× training schedule. When training longer in the 2× schedule,
-                    our synthetic data consistently helps improving the task performance by 0.3 AP bb and 0.2 AP mk.
-                </span>
-
-            </td>
-            
-        </tr>
-
-        <tr>
-            <td>
-                <center>
-                    <a href="./resources/mscoco.png"><img src = "./resources/mscoco.png" width="1100px"></img></a><br>
-                </center>
-            </td>
-            
-    </table>
-    <br>
-    <hr>
-    <br>
-    <table align=center width=1100px>
-        <tr>
-            <td>
-                <span style="font-size:18px">
-                    <b>PASCAL VOC detection & semantic segmentation.</b> For detection, we train on the trainval’07+12
-                    set and evaluate on test07. For semantic segmentation, we train on train aug2012 and evaluate on val2012. Results
-                    are average over 5 individual trials.
-                </span>
-            </td>
-        </tr>
-           
-
-        <tr>
-            <td>
-                <center>
-                    <a href="./resources/pascal-voc.png"><img src = "./resources/pascal-voc.png" width="700px"></img></a><br>
-                </center>
-            </td>
-        </tr>
-        
-    </table>
-    <br>
-    <hr>
-    <br>
-    <table align=center width=1100px>
-        <tr>
-            <td colspan="2">
-                <span style="font-size:18px">
-                    <b>Semi-supervised chest X-ray segmentation with a frozen backbone.</b> Performance numbers are mIoU. When using
-                    our synthetic dataset, we match the performance of the supervised and self-supervised pre-trained networks with only 1% and 5% of
-                    labels, respectively. We achieve a big gain using 100% of the data. Numbers are averaged over 3 independent trials.
-                </span>
-            </td>
-            <td colspan="2">
-                <span style="font-size:18px">
-                    <b>Cityscapes instance and semantic segmentation.</b> training with our BigGAN-sim dataset improves AP mk by 0.3 points in the instance segmentation task over
-                    the baseline model. However, we do not see a significant performance boost for the semantic segmentation task.
-                </span>
-            </td>
-
-        </tr>
-           
-        <tr>
-            <td colspan="2">
-                <center>
-                    <a href="./resources/chest-xray.png"><img src = "./resources/chest-xray.png" width="500px"></img></a><br>
-                </center>
-            </td>
-            <td colspan="2">
-                <center>
-                    <a href="./resources/cityscapes.png"><img src = "./resources/cityscapes.png" width="500px"></img></a><br>
-                </center>
-            </td>
-        </tr>
-        
-    </table>
-    <br>
-    <hr>
-    <br>
+    
     
     
     
@@ -859,9 +862,6 @@
     <br>
     </section>
     
-    
-    <hr>
-    <hr>
     
     
     </body>
