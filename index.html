@@ -1,0 +1,869 @@
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-53775284-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-53775284-6');
+    </script>
+    
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">google.load("jquery", "1.3.2");</script>
+    
+    <link rel="icon" href="https://nv-tlabs.github.io/images/logo_hu2fe6632db44d28c9b9d53edd3914c1d6_112452_0x70_resize_lanczos_2.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    
+    </head>
+    
+    <style type="text/css">
+        body {
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight:300;
+            font-size:18px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1100px;
+        }
+        .topnav {
+          background-color: #eeeeee;
+          overflow: hidden;
+        }
+    
+        .topnav div {
+          max-width: 1070px;
+          margin: 0 auto;
+        }
+    
+        .topnav a {
+          display: inline-block;
+          color: black;
+          text-align: center;
+          vertical-align: middle;
+          padding: 16px 16px;
+          text-decoration: none;
+          font-size: 16px;
+        }
+    
+        .topnav img {
+          width: 100%;
+          margin: 0.2em 0px 0.3em 0px;
+        }
+        .venue {
+          color: black;
+          text-align: center;
+        }
+        #bibtex pre {
+            font-size: 14px;
+            background-color: #eee;
+            padding: 16px;
+        }
+        h1 {
+            font-weight:300;
+            margin: 0.4em;
+        }
+    
+        p {
+            margin: 0.2em;
+        }
+    
+        .disclaimerbox {
+            background-color: #eee;
+            border: 1px solid #eeeeee;
+            border-radius: 10px ;
+            -moz-border-radius: 10px ;
+            -webkit-border-radius: 10px ;
+            padding: 20px;
+        }
+    
+        video.header-vid {
+            height: 140px;
+            border: 1px solid black;
+            border-radius: 10px ;
+            -moz-border-radius: 10px ;
+            -webkit-border-radius: 10px ;
+        }
+    
+        img.header-img {
+            height: 140px;
+            border: 1px solid black;
+            border-radius: 10px ;
+            -moz-border-radius: 10px ;
+            -webkit-border-radius: 10px ;
+        }
+    
+        img.rounded {
+            border: 1px solid #eeeeee;
+            border-radius: 10px ;
+            -moz-border-radius: 10px ;
+            -webkit-border-radius: 10px ;
+        }
+      .paper-btn {
+        position: relative;
+        text-align: center;
+    
+        display: inline-block;
+        margin: 12px;
+        padding: 8px 8px;
+    
+        border-width: 0;
+        outline: none;
+        border-radius: 2px;
+        
+        background-color: #76B900;
+        color: black !important;
+        font-size: 20px;
+        width: 150px;
+        font-weight: 600;
+      }
+      .paper-btn-parent {
+          display: flex;
+          justify-content: center;
+          margin: 16px 0px;
+      }
+      .paper-btn:hover {
+          opacity: 0.85;
+      }
+      .material-icons {
+          vertical-align: -6px;
+      }
+    /*    a:link,a:visited
+        {
+            color: #1367a7;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #208799;
+        }*/
+    
+        td.dl-link {
+            height: 160px;
+            text-align: center;
+            font-size: 22px;
+        }
+    
+        .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+            box-shadow:
+                    0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                    5px 5px 0 0px #fff, /* The second layer */
+                    5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                    10px 10px 0 0px #fff, /* The third layer */
+                    10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+                    15px 15px 0 0px #fff, /* The fourth layer */
+                    15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+                    20px 20px 0 0px #fff, /* The fifth layer */
+                    20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+                    25px 25px 0 0px #fff, /* The fifth layer */
+                    25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+            margin-left: 10px;
+            margin-right: 45px;
+        }
+    
+    
+        .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+            box-shadow:
+                    0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                    5px 5px 0 0px #fff, /* The second layer */
+                    5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                    10px 10px 0 0px #fff, /* The third layer */
+                    10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 30px;
+            margin-bottom: 5px;
+        }
+    
+        .vert-cent {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    
+        hr
+        {
+            margin: 0;
+            border: 0;
+            height: 1.5px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+
+    </style>
+    
+    <html>
+      <head>
+            <title>BigDatasetGAN</title>
+      </head>
+    
+      <body>
+        <div class="topnav" id="myTopnav">
+          <div>
+            <a href="https://www.nvidia.com/"
+              ><img width="100%" src="resources/nvidia.svg"
+            /></a>
+            <a href="https://nv-tlabs.github.io/"><strong>Toronto AI Lab</strong></a>
+    
+          </div>
+        </div>
+        <br>
+        <center>
+        <span style="font-size:42px">BigDatasetGAN: Synthesizing ImageNet with Pixel-wise Annotations</span>
+        </center>
+    
+        <br>
+          <table align=center width=700px>
+           <tr> 
+    
+      
+            <td align=center width=100px>
+                <center>
+                <span style="font-size:20px"><a href="https://scholar.google.ca/citations?user=8q2ISMIAAAAJ&hl=en">Daiqing Li </a><sup>1</sup></span>
+                </center>
+            </td>
+    
+            <td align=center width=100px>
+            <center>
+            <span style="font-size:20px"><a href="http://www.cs.toronto.edu/~linghuan/">Huan Ling</a><sup>1,2,3</sup></span>
+            </center>
+            </td>
+            
+            <td align=center width=100px>
+                <center>
+                <span style="font-size:20px"><a href="https://seung-kim.github.io/seungkim/">Seung Wook Kim </a><sup>1,2,3</sup></span>
+                </center>
+            </td>
+    
+    
+    
+    
+    
+           
+         </tr>
+        </table>
+    
+    
+          <table align=center width=700px>
+    
+        <tr>
+            <td align=center width=100px>
+                <center>
+                <span style="font-size:20px"><a href="https://nv-tlabs.github.io/author/karsten-kreis/">Karsten Kreis</a><sup>1</sup></span>
+                </center>
+                </td>
+              
+                    
+    
+          <td align=center width=100px>
+                <center>
+                <span style="font-size:20px"><a href="http://www.cs.toronto.edu/~fidler/">Sanja Fidler</a><sup>1,2,3</sup></span>
+                </center>
+            </td>
+    
+            <td align=center width=100px>
+                <center>
+                <span style="font-size:20px"><a href="https://groups.csail.mit.edu/vision/torralbalab/"> Antonio Torralba</a><sup>4</sup></span>
+                </center>
+                </td>
+                
+         </tr>
+        </table>
+    
+    
+    
+        <br>
+        <table align=center width=900px>
+           <tr>
+                  <td align=center width=100px>
+                <center>
+                <span style="font-size:20px"><sup>1</sup>NVIDIA</span>
+                </center>
+            </td>
+    
+    
+            <td align=center width=100px>
+            <center>
+    
+            <span style="font-size:20px"><sup>2</sup>University of Toronto</span>
+            </center>
+            </td>
+            <td align=center width=100px>
+                <center>
+                <span style="font-size:20px"><sup>3</sup>Vector Institute</span>
+                </center>
+            </td>
+            
+        
+         <td align=center width=100px>
+                <center>
+                <span style="font-size:20px"><sup>4</sup>MIT</span>
+                </center>
+            </td>
+         </tr>
+        </table>
+    
+        <br>
+        <p class="venue"><b>CVPR2022 (in submission)</b></p>
+    <center>
+                <div class="paper-btn-parent">
+                <a class="paper-btn" href="">
+                    <span class="material-icons">description</span> 
+                     Paper
+                </a>   
+                <a class="paper-btn" href="">
+                    <span class="material-icons">description</span> 
+                     Supplement
+                </a>
+    
+                <a class="paper-btn" href="">
+                    <span class="material-icons">description</span> 
+                     BibTex
+                </a>
+    
+                   </a>   
+    
+                </div>
+    </center>
+                   
+    <hr><hr>
+    
+    
+    
+    <!-- <center><h1>Abstract</h1></center> -->
+    <table align=center width=1100px>
+        <tr>
+            <td>
+                <img src = "./resources/teaser_final.jpg" width="1100px"></img>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+            <center>
+                <span style="font-size:15px;font-style:italic">  Our synthesized pixel-wise labeled ImageNet dataset. We sample both images and masks for each of the 1k ImageNet classes.</span>
+            </center>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <img src = "./resources/overview.jpg" width="1100px"></img>        
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <center>
+                <span style="font-size:15px;font-style:italic">  BigDatasetGAN overview: (1) We sample a few images per class from BigGAN and manually annotate them with masks. (2) We
+                    train a feature interpreter branch on top of BigGAN’s and VQGAN’s features on this data, turning these GANs into generators of labeled
+                    data. (3) We sample large synthetic datasets from BigGAN & VQGAN. (4) We use these datasets for training segmentation models.</span>
+                </center>
+            </td>
+        </tr>
+
+    </table>
+    <br>
+
+    <table align=center width=900px></table>
+
+        <tr>
+            <td width=700px>
+                <p align="justify" style="font-size: 18px">
+                Annotating images with pixel-wise labels is a time-consuming and costly process. Recently, DatasetGAN showcased a promising alternative – to synthesize a large labeled dataset via a generative adversarial network (GAN) by exploiting a small set of manually labeled, GAN-generated images. Here, we scale DatasetGAN to ImageNet scale of class diversity. We take image samples from the class-conditional generative model BigGAN trained on ImageNet, and manually annotate only 5 images per class, for all 1k classes. By training an effective feature segmentation architecture on top of BigGAN, we turn BigGAN into a labeled dataset generator. We further show that VQGAN can similarly serve as a dataset generator, leveraging the already annotated data. We create a new ImageNet benchmark by labeling an additional set of real images and evaluate segmentation performance in a variety of settings. Through an extensive ablation study we show big gains in leveraging a large generated dataset to train different supervised and self-supervised backbone models on pixel-wise tasks. Furthermore, we demonstrate that using our synthesized datasets for pre-training leads to improvements over standard ImageNet pre-training on several downstream datasets, such as PASCAL-VOC, MS-COCO, Cityscapes and chest X-ray, as well as tasks (detection, segmentation). Our benchmark will be made public and maintain a leaderboard for this challenging task.
+                </p> 
+            </td>
+    <br>
+    <hr>
+    <hr>
+    
+    
+     <center><h1>News</h1></center>
+    
+    <ul>
+    <li>[December 2021] Project page is up!</li>
+  
+    </ul>
+    <hr><hr>
+    
+     <center><h1>Methods</h1></center>
+    
+     <table align=center width=1000px>
+        <tr>
+            <td>
+                <center>
+                    <img src = "./resources/method-arch.jpg" width="800px"></img>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <span style="font-size:18px">
+                <b>Architecture of BigDatasetGAN based on BigGANs.</b> BigGAN adopts a convolutional architecture. Given random
+                noise z and a class label y_c , we obtain BigGAN’s generator
+                features F BigGAN from different layers. We group features from different spatial resolutions into high-, mid- and low-
+                level by their semantic meaning. Specifically, we group the first three ResBlocks into a high-level group with resolu-
+                tions 8 × 8 to 32 × 32. We group the next three ResBlocks including one attention block together as a mid-level group
+                with resolutions from 64 × 64 to 128 × 128. The last two ResBlocks before the image output layer are grouped into a
+                low-level group with resolutions 256 × 256 to 512 × 512. Note that high-level features in lower layers have a very
+                high feature dimensionality, i.e., 1536 × 8 × 8.
+            </span>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1000px>
+        <tr>
+            
+            <center>
+                <img src = "./resources/method-ssl.jpg" width="700px"></img>
+            </center>
+           
+
+        </tr>
+        
+        <tr>
+            <span style="font-size:18px">
+                <b>Simple architecture for adding a supervised segmentation branch to self-supervised representation learners.</b> We design a shallow semantic segmentation decoder based on
+                feature pyramid networks (FPN), to train a segmentation branch on our synthetic dataset.
+            </span>
+        </tr>
+
+    </table>
+    
+    <br>
+    <hr><hr>
+    <center><h1> Dataset Analysis</h1></center>
+
+    <table align=center width=1100px>
+        <tr>
+            <td colspan="4">
+                <center>
+                    <a href="./resources/dataset_all.png"><img src = "./resources/dataset_all.png" width="1100px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        
+    </table>
+  
+    <table align=center width=1100px>
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/dataset_analysis.png"><img src = "./resources/dataset_analysis.png" width="1100px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>Dataset analysis.</b> We report image & mask statistics across our datasets. We compute image and
+                    label quality using FID and KID and use Real-annotated dataset as reference. IN: instance count per image, MI: ratio of mask area over
+                    image area, BI: ratio of tight bounding box of the mask over image area, MB: ratio of mask area over area of its tight bounding box, PL:
+                    polygon length (polygon normalized to width and height of 1), SC: shape complexity measured by the number of points in a simplified
+                    polygon, SD: shape diversity measured by mean pair-wise Chamfer distance per class and averaged across classes.
+                </span>
+
+            </td>
+            
+        </tr>
+
+    </table>
+    <br>
+    <hr>
+    <br>
+    <!-- <center><h1> Quantitative Results</h1></center> -->
+
+    <table align=center width=1100px>
+
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>ImageNet pixel-wise benchmark.</b> Numbers are mIoU. 
+                    We compare various methods on several tasks, with supervised and self-supervised pre-training. We use Resnet-50 for all methods. We ablate the use of
+                    synthetic datasets for three methods. FG/BG evaluates binary segmentation across all classes; MC-N columns evaluate multi-class segmentation performance in setups with N classes. 
+                    Adding synthetic datasets improves performance by a large margin BigGAN-off and BigGAN-on compare offline & online sampling strategy.
+                </span>
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td width=100px>
+                <center>
+                    <a href="./resources/benchmark.png"><img src = "./resources/benchmark.png" width="800px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        
+    </table>
+    <table align=center width=1100px>
+
+        
+
+        <tr>
+            <td colspan="2">
+                <center>
+                    <a href="./resources/ablation_dataset_size.jpg"><img src = "./resources/ablation_dataset_size.jpg" width="550px"></img></a><br>
+                </center>
+            </td>
+            <td colspan="2">
+                <center>
+                    <a href="./resources/ablation_model_size.jpg"><img src = "./resources/ablation_model_size.jpg" width="550px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                
+                <span style="font-size:15px">
+                    <b>Ablating synthetic dataset size.</b> We fix the model to the Resnet50 backbone and compare the performance when we increase the
+                    synthetic dataset size. The model trained using a 22k synthetic dataset outperforms the same model trained with 2k human-annotated dataset. Another
+                    7 points is gained when further increasing the synthetic data size from 22k to 220k. Here, 2M is the total number of samples synthesized through our
+                    online sampling strategy.
+                </span>
+                
+            </td>
+            <td colspan="2">
+
+                <span style="font-size:15px">
+                    <b>Ablating backbone size.</b> We scale up the backbone from Resnet50 to Resnet101
+                    and Resnet152. We supervise with 2k human-annotated labels (red), and with our BigGAN-sim
+                    dataset (green), which is 100x larger. BigGAN-sim dataset supervision leads to consistent improvements, especially for larger models.
+                </span>
+
+            </td>
+            
+        </tr>
+    </table>
+
+    <br>
+    <hr>
+    <br>
+    <center><h1> Dataset Visualization</h1></center>
+
+    <table align=center width=1100px>
+
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>Examples from the Real-annotated dataset.</b> We visualize both the segmentation masks as well as the boundary polygons.
+                    
+                </span>
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/real-annotated-random-250.jpg"><img src = "./resources/real-annotated-random-250.jpg" width="1100px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1100px>
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>Examples from the Synthetic-annotated dataset.</b> We visualize both the segmentation masks as well as the boundary polygons.
+                </span>
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td width=100px>
+                <center>
+                    <a href="./resources/synthetic-annotated-random-250.jpg"><img src = "./resources/synthetic-annotated-random-250.jpg" width="1100px"></img></a><br>
+                </center>
+            </td>
+            
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1100px>
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>Examples from the BigGAN-sim random samples.</b> We visualize both the segmentation masks as well as the boundary polygons.
+                </span>
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td width=100px>
+                <center>
+                    <a href="./resources/biggan-sim-random-250.jpg"><img src = "./resources/biggan-sim-random-250.jpg" width="1100px"></img></a><br>
+                </center>
+            </td>
+            
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1100px>
+        <tr>
+            <td>
+                <span style="font-size:18px">
+                    <b>Examples from the VQGAN-sim random samples.</b> We visualize both the segmentation masks as well as the boundary polygons.
+                </span>
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/vqgan-sim-random-250.jpg"><img src = "./resources/vqgan-sim-random-250.jpg" width="1100px"></img></a><br>
+                </center>
+            </td>
+            
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1100px>
+        <tr>
+            <td colspan='4'>
+                <span style="font-size:18px">
+                    <b>BigGAN-sim vs VQGAN-sim.</b> We select the same classes at each row for both BigGAN-sim and VQGAN-sim for easy
+                    comparison. Comparing to BigGAN-sim, the VQGAN-sim dataset samples are more diverse in terms of object scale,
+                    pose as well as background. However, we see BigGAN-sim has better label quality than VQGAN-sim where in some
+                    cases the labels have holes and are noisy.
+                </span>
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td colspan='2'>
+                <center>
+                    <a href="./resources/biggan-sim-perclass-300.jpg"><img src = "./resources/biggan-sim-perclass-300.jpg" width="550px"></img></a><br>
+                </center>
+            </td>
+            <td colspan='2'>
+                <center>
+                    <a href="./resources/vqgan-sim-perclass-300.jpg"><img src = "./resources/vqgan-sim-perclass-300.jpg" width="550px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'> 
+                <center><span style="font-size:18px">BigGAN-sim per-class samples</span></center>
+            </td>
+            <td colspan='2'> 
+                <center><span style="font-size:18px">VQGAN-sim per-class samples</span></center>
+            </td>
+         </tr>
+    </table>
+    
+    
+    <br>
+    <hr><hr>
+
+    <center><h1> Downstream Tasks Performance</h1></center>
+
+    <table align=center width=1100px>
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>MS-COCO object detection & instance segmentation.</b> Using our synthetic data during pre-training improves object detection
+                    performance by 0.4 AP bb , and instance segmentation by 0.3 AP mk in 1× training schedule. When training longer in the 2× schedule,
+                    our synthetic data consistently helps improving the task performance by 0.3 AP bb and 0.2 AP mk.
+                </span>
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/mscoco.png"><img src = "./resources/mscoco.png" width="1100px"></img></a><br>
+                </center>
+            </td>
+            
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1100px>
+        <tr>
+            <td>
+                <span style="font-size:18px">
+                    <b>PASCAL VOC detection & semantic segmentation.</b> For detection, we train on the trainval’07+12
+                    set and evaluate on test07. For semantic segmentation, we train on train aug2012 and evaluate on val2012. Results
+                    are average over 5 individual trials.
+                </span>
+            </td>
+        </tr>
+           
+
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/pascal-voc.png"><img src = "./resources/pascal-voc.png" width="700px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        
+    </table>
+    <br>
+    <hr>
+    <br>
+    <table align=center width=1100px>
+        <tr>
+            <td colspan="2">
+                <span style="font-size:18px">
+                    <b>Semi-supervised chest X-ray segmentation with a frozen backbone.</b> Performance numbers are mIoU. When using
+                    our synthetic dataset, we match the performance of the supervised and self-supervised pre-trained networks with only 1% and 5% of
+                    labels, respectively. We achieve a big gain using 100% of the data. Numbers are averaged over 3 independent trials.
+                </span>
+            </td>
+            <td colspan="2">
+                <span style="font-size:18px">
+                    <b>Cityscapes instance and semantic segmentation.</b> training with our BigGAN-sim dataset improves AP mk by 0.3 points in the instance segmentation task over
+                    the baseline model. However, we do not see a significant performance boost for the semantic segmentation task.
+                </span>
+            </td>
+
+        </tr>
+           
+        <tr>
+            <td colspan="2">
+                <center>
+                    <a href="./resources/chest-xray.png"><img src = "./resources/chest-xray.png" width="500px"></img></a><br>
+                </center>
+            </td>
+            <td colspan="2">
+                <center>
+                    <a href="./resources/cityscapes.png"><img src = "./resources/cityscapes.png" width="500px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        
+    </table>
+    <br>
+    <hr>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+                <table align=center width=800>
+    
+                 <center><h1>Paper</h1></center>
+                    <tr>
+                      <td><a href=""><img style="height:330px; border: solid; border-radius:30px;" src="./resources/paper.png"/></a></td>
+    
+                      <td><span><b>BigDatasetGAN:<br>Synthesizing ImageNet with Pixel-wise Annotations</b></span><br><br>
+                        Daiqing Li, Huan Ling, Seung Wook Kim,  <br> Karsten Kreis, Sanja Fidler, Antonio Torralba
+                        <br><br>
+     <!-- <span style="background-color:#00FEFE">  Neurips'21 </span> -->
+     <span><b> CVPR'22 (in submission) </b></span><br><br>
+                                  
+                        <span style="font-size:18px">
+                          <a href="" target="_blank">[Paper]</a></
+                               <span style="font-size:18px"> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="" target="_blank">[Benchmark and dataset]</a> (coming soon)</span>
+    
+                    <br>
+                    <br>
+                    <p>For feedback and questions please reach out to <a href="mailto:daiqingl@nvidia.com">Daiqing Li</a> and <a href="mailto:huling@nvidia.com">Huan Ling</a>.</p>
+    
+    
+                        </td>
+    
+      
+    
+                  </tr>
+                   
+                    
+                    
+       
+                  <tr>
+                      <td colspan="5" style="font-size: 14px">
+        
+                      </td>
+                  </tr>
+    
+    
+    
+                </table>
+                <br>
+    
+                <br>
+    
+    
+    
+            <hr><hr>
+    
+     <center><h1>Citation</h1></center>
+    <section id="bibtex">
+    
+          <p style="line-height: 1.75em; text-align: left;">If you find this work useful for your research, please consider citing it as:</p>
+          <pre><code>@inproceedings{ling2021editgan,
+      title = {EditGAN: High-Precision Semantic Image Editing}, 
+      author = {Huan Ling and Karsten Kreis and Daiqing Li and Seung Wook Kim and Antonio Torralba and Sanja Fidler},
+      booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+      year = {2021}
+    }
+    </code></pre>
+    
+    See prior work on efficient semantic segmentation using GANs, which EditGAN builds on:  <br>
+    <a href="https://nv-tlabs.github.io/datasetGAN/">DatasetGAN</a>
+    
+         <pre><code>@inproceedings{zhang21,
+      title={DatasetGAN: Efficient Labeled Data Factory with Minimal Human Effort},
+      author={Zhang, Yuxuan and Ling, Huan and Gao, Jun and Yin, Kangxue and Lafleche, 
+      Jean-Francois and Barriuso, Adela and Torralba, Antonio and Fidler, Sanja},
+      booktitle={CVPR},
+      year={2021}
+    }
+    </code></pre>
+    
+     <a href="https://nv-tlabs.github.io/semanticGAN/">SemanticGAN</a>
+    
+          <pre><code>@inproceedings{semanticGAN, 
+    title={Semantic Segmentation with Generative Models: Semi-Supervised Learning and Strong Out-of-Domain Generalization}, 
+    booktitle={Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+    author={Li, Daiqing and Yang, Junlin and Kreis, Karsten and Torralba, Antonio and Fidler, Sanja}, 
+    year={2021}, 
+    }
+    </code></pre>
+    
+    <br>
+    </section>
+    
+    
+    <hr>
+    <hr>
+    
+    
+    </body>
+    </html>
+    
