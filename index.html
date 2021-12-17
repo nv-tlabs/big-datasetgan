@@ -505,6 +505,19 @@
     <table align=center width=1100px>
         <tr>
             <td>
+
+                <span style="font-size:18px">
+                    We introduce a benchmark with a suite of segmentation challenges using our Synthetic-annotated dataset (5k) as training set 
+                    and evaluate on our Real-annotated held-out dataset (8k). Specifically, we evaluate performance for (1)
+                    two individual classes (dog and bird), (2) foreground/background (FG/BG) segmentation evaluated across all 1k classes, 
+                    and (3) multi-class semantic segmentation for various subsets of classes. 
+                </span>
+
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
                 <center>
                     <a href="./resources/benchmark.png"><img src = "./resources/benchmark.png" width="800px"></img></a><br>
                 </center>
@@ -575,9 +588,8 @@
             <td>
 
                 <span style="font-size:18px">
-                    <b>MS-COCO object detection & instance segmentation.</b> Using our synthetic data during pre-training improves object detection
-                    performance by 0.4 AP bb , and instance segmentation by 0.3 AP mk in 1x training schedule. When training longer in the 2x schedule,
-                    our synthetic data consistently helps improving the task performance by 0.3 AP bb and 0.2 AP mk.
+                    We propose a simple architecture design to jointly train model backbones with contrastive learning and supervision from our synthetic datasets as pretraining step.  
+                    Here we show transfer learning experiments results for dense prediction tasks on MS-COCO, PASCAL-VOC, Cityscapes, as well as chest X-ray segmentation in the medical domain.
                 </span>
 
             </td>
@@ -590,12 +602,33 @@
                     <a href="./resources/mscoco.png"><img src = "./resources/mscoco.png" width="1100px"></img></a><br>
                 </center>
             </td>
+        </tr>
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>MS-COCO object detection & instance segmentation.</b> Using our synthetic data during pre-training improves object detection
+                    performance by 0.4 AP bb , and instance segmentation by 0.3 AP mk in 1x training schedule. When training longer in the 2x schedule,
+                    our synthetic data consistently helps improving the task performance by 0.3 AP bb and 0.2 AP mk.
+                </span>
+
+            </td>
             
+        </tr>
     </table>
     <br>
     <hr>
     <br>
     <table align=center width=1100px>
+        
+
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/pascal-voc.png"><img src = "./resources/pascal-voc.png" width="700px"></img></a><br>
+                </center>
+            </td>
+        </tr>
         <tr>
             <td>
                 <span style="font-size:18px">
@@ -606,20 +639,25 @@
             </td>
         </tr>
            
-
-        <tr>
-            <td>
-                <center>
-                    <a href="./resources/pascal-voc.png"><img src = "./resources/pascal-voc.png" width="700px"></img></a><br>
-                </center>
-            </td>
-        </tr>
-        
     </table>
     <br>
     <hr>
     <br>
     <table align=center width=1100px>
+        
+           
+        <tr>
+            <td colspan="2">
+                <center>
+                    <a href="./resources/chest-xray.png"><img src = "./resources/chest-xray.png" width="500px"></img></a><br>
+                </center>
+            </td>
+            <td colspan="2">
+                <center>
+                    <a href="./resources/cityscapes.png"><img src = "./resources/cityscapes.png" width="500px"></img></a><br>
+                </center>
+            </td>
+        </tr>
         <tr>
             <td colspan="2">
                 <span style="font-size:18px">
@@ -636,20 +674,6 @@
             </td>
 
         </tr>
-           
-        <tr>
-            <td colspan="2">
-                <center>
-                    <a href="./resources/chest-xray.png"><img src = "./resources/chest-xray.png" width="500px"></img></a><br>
-                </center>
-            </td>
-            <td colspan="2">
-                <center>
-                    <a href="./resources/cityscapes.png"><img src = "./resources/cityscapes.png" width="500px"></img></a><br>
-                </center>
-            </td>
-        </tr>
-        
     </table>
     <br>
     <hr>
@@ -658,7 +682,19 @@
     <center><h1> Dataset Visualization</h1></center>
 
     <table align=center width=1100px>
+        <tr>
+            <td>
 
+                <span style="font-size:18px">
+                    Here we show random samples from the human-annotated dataset Real-annotated (real ImageNet subset labeled manually), 
+                    Synthetic-annotated (BigGAN’s samples labeled manually) as well as synthetic datasets BigGAN-sim, VQGAN-sim generated by BigGAN and VQGAN. 
+                    We also show side-by-side comparison between BigGAN-sim and VQGAN-sim datasets.
+                </span>
+
+            </td>
+            
+        </tr>
+        
         <tr>
             <td>
 
@@ -853,6 +889,7 @@
           <pre><code>@inproceedings{bigDatasetGAN,
       title = {BigDatasetGAN: Synthesizing ImageNet with Pixel-wise Annotations}, 
       author = {Daiqing Li and Huan Ling and Seung Wook Kim and Karsten Kreis and Sanja Fidler and Antonio Torralba},
+      booktitle={arxiv},
       year = {2021}
     }
     </code></pre>
