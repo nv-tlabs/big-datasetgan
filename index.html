@@ -394,7 +394,7 @@
      <center><h1>News</h1></center>
     
     <ul>
-    <li>[December 2021] Project page is up!</li>
+    <li>[December 2021] Benchmark and Dataset coming soon!</li>
   
     </ul>
     <hr><hr>
@@ -426,10 +426,10 @@
                 with resolutions from 64x64 to 128x128. The last two ResBlocks before the image output layer are grouped into a
                 low-level group with resolutions 256x256 to 512x512. Note that high-level features in lower layers have a very
                 high feature dimensionality, i.e., 1536x8x8. We propose to first resize features in the same group into the highest resolution within the group, 
-                and then use <i>1x1conv</i> to reduce feature dimensionality before upsampling all the features to the resolution in the next level. 
+                and then use <i>1x1 conv</i> to reduce feature dimensionality before upsampling all the features to the resolution in the next level. 
                 After upsample, features from lower layers are concatenated with the resized features from the current level following the same operations as described above. 
-                Features from two levels are then fused by a <i>mix-conv</i> operation which includes two <i>3x3conv</i> operations with a residual connection and 
-                a <i>conditional batchnorm</i> operation with class information. The same process is repeated in the low-level group, and a final <i>1x1conv</i> is used to output the segmentation logits. 
+                Features from two levels are then fused by a <i>mix-conv</i> operation which includes two <i>3x3 conv</i> operations with a residual connection and 
+                a <i>conditional batchnorm</i> operation with class information. The same process is repeated in the low-level group, and a final <i>1x1 conv</i> is used to output the segmentation logits. 
                 Compared to DatasetGAN, this design greatly reduces the memory cost and can use contextual information in the <i>mix-conv</i> operation.
             </span>
             </td>
@@ -453,7 +453,7 @@
             <span style="font-size:18px">
                 <b>Simple architecture for adding a supervised segmentation branch to self-supervised representation learners.</b> 
                 We propose a simple architecture design to jointly train model backbones with contrastive learning and supervision from our synthetic datasets as pretraining step. 
-                We design a shallow semantic segmentation decoder based on feature pyramid networks (FPN), to train a segmentation branch on our synthetic dataset. 
+                We design a shallow semantic segmentation decoder based on feature pyramid networks (FPN) to train a segmentation branch on our synthetic dataset. 
                 After the pretraining, the trained backbone can be used in various downstream tasks.
             </span>
             </td>
@@ -497,9 +497,8 @@
             </td>
             
         </tr>
-
+        
     </table>
-  
     <table align=center width=1100px>
         <tr>
             <td>
@@ -523,7 +522,30 @@
             </td>
             
         </tr>
+        
+    </table>
+    
+    <table align=center width=1100px>
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/mean-shape.png"><img src = "./resources/mean-shape.png" width="1100px"></img></a><br>
+                </center>
+            </td>
+        </tr>
 
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>Mean shapes from our BigGAN-sim dataset.</b> For our 100k BigGAN-sim dataset, each class has around 100 samples. We crop
+                    the mask from the segmentation label and run k-means with 5 clusters to extract the major modes of the selected ImageNet class shapes.
+                </span>
+
+            </td>
+            
+        </tr>
+        
     </table>
     <br>
     <hr>
@@ -565,10 +587,61 @@
             
         </tr>
     </table>
+    <br>
+    <hr>
+    <br>
+    <center><h2> Imagenet Segmentation Visualization</h2></center>
     <table align=center width=1100px>
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/imagenet-benchmark-seg.png"><img src = "./resources/imagenet-benchmark-seg.png" width="1100px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
 
-        
+                <span style="font-size:18px">
+                    <b>Qualitative results on MC-128.</b> We visualize predictions (second column) of DeepLab trained on our BigGAN-sim dataset, compared to
+                    ground-truth annotations (third column). The final row shows typical failure cases, which include multiple parts, thin structures or complicated scenes.
+                </span>
 
+            </td>
+            
+        </tr>
+    </table>
+    <br>
+    <hr>
+    <br>
+    <center><h2> Imagenet Segmentation vs Classification Analysis</h2></center>
+    <table align=center width=1100px>
+        <tr>
+            <td>
+                <center>
+                    <a href="./resources/top5.png"><img src = "./resources/top5.png" width="1100px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>Top-5 analysis of ImageNet benchmark.</b> Text below images indicates: Class name, FG/BG segmentation measured in mIoU, classification
+                    accuracy of a Resnet-50 pre-trained on ImageNet. Top Row: We visualize Top-5 best predictions of DeepLabv3 trained on BigGAN-sim dataset for the
+                    FG/BG task, compared to ground-truth annotations (third column). Bottom Row: We visualize Top-5 worst predictions. Typical failure cases include small
+                    objects or thin structures. Interestingly, classes the are hard to segment, such as baskeball and bow, are not necessarily hard to classify.
+                </span>
+
+            </td>
+            
+        </tr>
+    </table>
+    <br>
+    <hr>
+    <br>
+    <center><h2> Imagenet Segmentation Ablation Study</h2></center>
+    <table align=center width=1100px>
         <tr>
             <td colspan="2">
                 <center>
