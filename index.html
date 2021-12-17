@@ -417,7 +417,12 @@
                 level by their semantic meaning. Specifically, we group the first three ResBlocks into a high-level group with resolutions 8x8 to 32x32. We group the next three ResBlocks including one attention block together as a mid-level group
                 with resolutions from 64x64 to 128x128. The last two ResBlocks before the image output layer are grouped into a
                 low-level group with resolutions 256x256 to 512x512. Note that high-level features in lower layers have a very
-                high feature dimensionality, i.e., 1536x8x8.
+                high feature dimensionality, i.e., 1536x8x8. We propose to first resize features in the same group into the highest resolution within the group, 
+                and then use <i>1x1conv</i> to reduce feature dimensionality before upsampling all the features to the resolution in the next level. 
+                After upsample, features from lower layers are concatenated with the resized features from the current level following the same operations as described above. 
+                Features from two levels are then fused by a <i>mix-conv</i> operation which includes two <i>3x3conv</i> operations with a residual connection and 
+                a <i>conditional batchnorm</i> operation with class information. The same process is repeated in the low-level group, and a final <i>1x1conv</i> is used to output the segmentation logits. 
+                Compared to DatasetGAN, this design greatly reduces the memory cost and can use contextual information in the <i>mix-conv</i> operation.
             </span>
             </td>
         </tr>
@@ -438,8 +443,10 @@
         <tr>
             <td>
             <span style="font-size:18px">
-                <b>Simple architecture for adding a supervised segmentation branch to self-supervised representation learners.</b> We design a shallow semantic segmentation decoder based on
-                feature pyramid networks (FPN), to train a segmentation branch on our synthetic dataset.
+                <b>Simple architecture for adding a supervised segmentation branch to self-supervised representation learners.</b> 
+                We propose a simple architecture design to jointly train model backbones with contrastive learning and supervision from our synthetic datasets as pretraining step. 
+                We design a shallow semantic segmentation decoder based on feature pyramid networks (FPN), to train a segmentation branch on our synthetic dataset. 
+                After the pretraining, the trained backbone can be used in various downstream tasks.
             </span>
             </td>
         </tr>
