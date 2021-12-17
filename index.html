@@ -377,9 +377,9 @@
                 Annotating images with pixel-wise labels is a time-consuming and costly process. Recently, DatasetGAN showcased a promising 
                 alternative - to synthesize a large labeled dataset via a generative adversarial network (GAN) by exploiting a small set of manually labeled, 
                 GAN-generated images. Here, we scale DatasetGAN to ImageNet scale of class diversity. We take image samples from the class-conditional generative model BigGAN trained on ImageNet, 
-                and manually annotate only 5 images per class, for all 1k classes. By training an effective feature segmentation architecture on top of BigGAN, 
+                and manually annotate 5 images per class, for all 1k classes. By training an effective feature segmentation architecture on top of BigGAN, 
                 we turn BigGAN into a labeled dataset generator. We further show that VQGAN can similarly serve as a dataset generator, leveraging the already annotated data. 
-                We create a new ImageNet benchmark by labeling an additional set of real images and evaluate segmentation performance in a variety of settings. 
+                We create a new ImageNet benchmark by labeling an additional set of 8k real images and evaluate segmentation performance in a variety of settings. 
                 Through an extensive ablation study we show big gains in leveraging a large generated dataset to train different supervised and self-supervised backbone models on pixel-wise tasks. 
                 Furthermore, we demonstrate that using our synthesized datasets for pre-training leads to improvements over standard ImageNet pre-training on several downstream datasets, 
                 such as PASCAL-VOC, MS-COCO, Cityscapes and chest X-ray, as well as tasks (detection, segmentation). Our benchmark will be made public and maintain a leaderboard for 
@@ -402,14 +402,14 @@
      <center><h1>Methods</h1></center>
     
      <table align=center width=1100px>
-        <tr>
+        <!-- <tr>
             <td>
+            
             <span style="font-size:18px">
-                Here we show detailed architecture design of our feature interpreter segmentation branch using BigGAN's features. We also show a simple segmentation branch design allowing 
-                jointly train model backbones with contrastive learning and supervision from our synthetic datasets as pretraining step.
+                Here we show detailed architecture design of our feature interpreter segmentation branch on top of BigGAN's features. 
             </span>
             </td>
-        </tr>
+        </tr> -->
         <tr>
             <td>
                 <center>
@@ -420,7 +420,7 @@
         <tr>
             <td>
             <span style="font-size:18px">
-                <b>Architecture of BigDatasetGAN based on BigGANs.</b> We obtain BigGAN's generator
+                <!-- <b>Architecture of BigDatasetGAN based on BigGANs.</b> We obtain BigGAN's generator
                 features from different layers. We group features from different spatial resolutions into high-, mid- and low-
                 level by their semantic meaning. Specifically, we group the first three ResBlocks into a high-level group with resolutions 8x8 to 32x32. We group the next three ResBlocks including one attention block together as a mid-level group
                 with resolutions from 64x64 to 128x128. The last two ResBlocks before the image output layer are grouped into a
@@ -430,7 +430,9 @@
                 After upsample, features from lower layers are concatenated with the resized features from the current level following the same operations as described above. 
                 Features from two levels are then fused by a <i>mix-conv</i> operation which includes two <i>3x3 conv</i> operations with a residual connection and 
                 a <i>conditional batchnorm</i> operation with class information. The same process is repeated in the low-level group, and a final <i>1x1 conv</i> is used to output the segmentation logits. 
-                Compared to DatasetGAN, this design greatly reduces the memory cost and can use contextual information in the <i>mix-conv</i> operation.
+                Compared to DatasetGAN, this design greatly reduces the memory cost and can use contextual information in the <i>mix-conv</i> operation. -->
+                <b>Architecture of BigDatasetGAN based on BigGAN.</b> We augment BigGAN with a segmentation branch using BigGAN's features. 
+                We exploit the rich semantic features of generative models in order to synthesize paired data, segmentation masks and images, turning generative models into dataset generators.
             </span>
             </td>
         </tr>
@@ -438,7 +440,7 @@
     <br>
     <hr>
     <br>
-    <table align=center width=1100px>
+    <!-- <table align=center width=1100px>
         <tr>
             <td>
             <center>
@@ -459,14 +461,13 @@
             </td>
         </tr>
 
-    </table>
+    </table> -->
     
-    <br>
-    <hr><hr>
+    <!-- <br>
+    <hr><hr> -->
     <center><h1> Dataset Analysis</h1></center>
 
     <table align=center width=1100px>
-        
         <tr>
             <td>
 
@@ -479,27 +480,6 @@
             </td>
             
         </tr>
-        <tr>
-            <td colspan="4">
-                <center>
-                    <a href="./resources/dataset_all.png"><img src = "./resources/dataset_all.png" width="1100px"></img></a><br>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <td>
-
-                <span style="font-size:18px">
-                    <b>Examples from our datasets:</b> Real-annotated (real ImageNet subset labeled manually), Synthetic-annotated 
-                    (BigGAN’s samples labeled manually), and synthetic BigGAN-sim, VQGAN-sim datasets. Notice the high quality of synthetic sampled labeled examples.
-                </span>
-
-            </td>
-            
-        </tr>
-        
-    </table>
-    <table align=center width=1100px>
         <tr>
             <td>
                 <center>
@@ -524,6 +504,31 @@
         </tr>
         
     </table>
+    <br>
+    <table align=center width=1100px>
+        
+        
+        <tr>
+            <td colspan="4">
+                <center>
+                    <a href="./resources/dataset_all.png"><img src = "./resources/dataset_all.png" width="1100px"></img></a><br>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <span style="font-size:18px">
+                    <b>Examples from our datasets:</b> Real-annotated (real ImageNet subset labeled manually), Synthetic-annotated 
+                    (BigGAN’s samples labeled manually), and synthetic BigGAN-sim, VQGAN-sim datasets. Notice the high quality of synthetic sampled labeled examples.
+                </span>
+
+            </td>
+            
+        </tr>
+        
+    </table>
+    <br>
     
     <table align=center width=1100px>
         <tr>
@@ -780,6 +785,92 @@
     <hr>
     <br>
 
+    <table align=center width=800>
+
+            <center><h1>Paper</h1></center>
+            <tr>
+                <td><a href=""><img style="height:330px; border: solid; border-radius:30px;" src="./resources/paper.png"/></a></td>
+
+                <td><span><b>BigDatasetGAN:<br>Synthesizing ImageNet with Pixel-wise Annotations</b></span><br><br>
+                Daiqing Li, Huan Ling, Seung Wook Kim,  <br> Karsten Kreis, Sanja Fidler, Antonio Torralba
+                <br><br>
+
+<!-- <span><b> </b></span><br><br> -->
+                            
+                <span style="font-size:18px">
+                    <a href="" target="_blank">[Paper]</a></
+                        <span style="font-size:18px"> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="" target="_blank">[Benchmark and dataset]</a> (coming soon)</span>
+
+            <br>
+            <br>
+            <p>For feedback and questions please reach out to <a href="mailto:daiqingl@nvidia.com">Daiqing Li</a> and <a href="mailto:huling@nvidia.com">Huan Ling</a>.</p>
+
+
+                </td>
+
+
+
+            </tr>
+            
+            
+            
+
+            <tr>
+                <td colspan="5" style="font-size: 14px">
+
+                </td>
+            </tr>
+
+
+
+        </table>
+        <br>
+
+        <br>
+
+
+
+    <hr><hr>
+    
+    <center><h1>Citation</h1></center>
+    <section id="bibtex">
+    
+          <p style="line-height: 1.75em; text-align: left;">If you find this work useful for your research, please consider citing it as:</p>
+          <pre><code>@inproceedings{bigDatasetGAN,
+      title = {BigDatasetGAN: Synthesizing ImageNet with Pixel-wise Annotations}, 
+      author = {Daiqing Li and Huan Ling and Seung Wook Kim and Karsten Kreis and Sanja Fidler and Antonio Torralba},
+      booktitle={arxiv},
+      year = {2021}
+    }
+    </code></pre>
+    
+    See prior work on using GANs for downstream tasks, which BigDatasetGAN builds on:  <br>
+    <a href="https://nv-tlabs.github.io/datasetGAN/">DatasetGAN</a>
+    
+         <pre><code>@inproceedings{zhang21,
+      title={DatasetGAN: Efficient Labeled Data Factory with Minimal Human Effort},
+      author={Zhang, Yuxuan and Ling, Huan and Gao, Jun and Yin, Kangxue and Lafleche, 
+      Jean-Francois and Barriuso, Adela and Torralba, Antonio and Fidler, Sanja},
+      booktitle={CVPR},
+      year={2021}
+    }
+    </code></pre>
+    
+     <a href="https://nv-tlabs.github.io/semanticGAN/">SemanticGAN</a>
+    
+          <pre><code>@inproceedings{semanticGAN, 
+    title={Semantic Segmentation with Generative Models: Semi-Supervised Learning and Strong Out-of-Domain Generalization}, 
+    booktitle={Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+    author={Li, Daiqing and Yang, Junlin and Kreis, Karsten and Torralba, Antonio and Fidler, Sanja}, 
+    year={2021}, 
+    }
+    </code></pre>
+    
+    <br>
+    </section>
+    <br>
+    <hr><hr>
+    
     <center><h1> Dataset Visualization</h1></center>
 
     <table align=center width=1100px>
@@ -925,100 +1016,7 @@
     </table>
     
     
-    <br>
-    <hr><hr>
-
     
-    
-    
-    
-    
-    
-    
-    
-    <table align=center width=800>
-
-            <center><h1>Paper</h1></center>
-            <tr>
-                <td><a href=""><img style="height:330px; border: solid; border-radius:30px;" src="./resources/paper.png"/></a></td>
-
-                <td><span><b>BigDatasetGAN:<br>Synthesizing ImageNet with Pixel-wise Annotations</b></span><br><br>
-                Daiqing Li, Huan Ling, Seung Wook Kim,  <br> Karsten Kreis, Sanja Fidler, Antonio Torralba
-                <br><br>
-
-<!-- <span><b> </b></span><br><br> -->
-                            
-                <span style="font-size:18px">
-                    <a href="" target="_blank">[Paper]</a></
-                        <span style="font-size:18px"> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="" target="_blank">[Benchmark and dataset]</a> (coming soon)</span>
-
-            <br>
-            <br>
-            <p>For feedback and questions please reach out to <a href="mailto:daiqingl@nvidia.com">Daiqing Li</a> and <a href="mailto:huling@nvidia.com">Huan Ling</a>.</p>
-
-
-                </td>
-
-
-
-            </tr>
-            
-            
-            
-
-            <tr>
-                <td colspan="5" style="font-size: 14px">
-
-                </td>
-            </tr>
-
-
-
-        </table>
-        <br>
-
-        <br>
-
-
-
-    <hr><hr>
-    
-    <center><h1>Citation</h1></center>
-    <section id="bibtex">
-    
-          <p style="line-height: 1.75em; text-align: left;">If you find this work useful for your research, please consider citing it as:</p>
-          <pre><code>@inproceedings{bigDatasetGAN,
-      title = {BigDatasetGAN: Synthesizing ImageNet with Pixel-wise Annotations}, 
-      author = {Daiqing Li and Huan Ling and Seung Wook Kim and Karsten Kreis and Sanja Fidler and Antonio Torralba},
-      booktitle={arxiv},
-      year = {2021}
-    }
-    </code></pre>
-    
-    See prior work on using GANs for downstream tasks, which BigDatasetGAN builds on:  <br>
-    <a href="https://nv-tlabs.github.io/datasetGAN/">DatasetGAN</a>
-    
-         <pre><code>@inproceedings{zhang21,
-      title={DatasetGAN: Efficient Labeled Data Factory with Minimal Human Effort},
-      author={Zhang, Yuxuan and Ling, Huan and Gao, Jun and Yin, Kangxue and Lafleche, 
-      Jean-Francois and Barriuso, Adela and Torralba, Antonio and Fidler, Sanja},
-      booktitle={CVPR},
-      year={2021}
-    }
-    </code></pre>
-    
-     <a href="https://nv-tlabs.github.io/semanticGAN/">SemanticGAN</a>
-    
-          <pre><code>@inproceedings{semanticGAN, 
-    title={Semantic Segmentation with Generative Models: Semi-Supervised Learning and Strong Out-of-Domain Generalization}, 
-    booktitle={Conference on Computer Vision and Pattern Recognition (CVPR)}, 
-    author={Li, Daiqing and Yang, Junlin and Kreis, Karsten and Torralba, Antonio and Fidler, Sanja}, 
-    year={2021}, 
-    }
-    </code></pre>
-    
-    <br>
-    </section>
     
     
     
