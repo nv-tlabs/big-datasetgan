@@ -1,7 +1,8 @@
-@inproceedings{bigDatasetGAN,
-      title = {BigDatasetGAN: Synthesizing ImageNet with Pixel-wise Annotations}, 
-      author = {Daiqing Li and Huan Ling and Seung Wook Kim and Karsten Kreis and 
-                Adela Barriuso and Sanja Fidler and Antonio Torralba},
-      booktitle={arxiv},
-      year = {2022}
-    }
+@misc{li2022bigdatasetgan,
+      title={BigDatasetGAN: Synthesizing ImageNet with Pixel-wise Annotations}, 
+      author={Daiqing Li and Huan Ling and Seung Wook Kim and Karsten Kreis and Adela Barriuso and Sanja Fidler and Antonio Torralba},
+      year={2022},
+      eprint={2201.04684},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
